@@ -18,76 +18,34 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val edtNum1 = findViewById<EditText>(R.id.edt_num1)
-        val edtNum2 = findViewById<EditText>(R.id.edt_num2)
-        val btnSoma = findViewById<Button>(R.id.btn_somar)
-        val btnSub = findViewById<Button>(R.id.btn_sub)
-        val btnDiv = findViewById<Button>(R.id.btn_div)
-        val btnMult = findViewById<Button>(R.id.btn_mult)
+        val edtNum1 = findViewById<EditText>(R.id.edt_num1) // Tensão
+        val edtNum2 = findViewById<EditText>(R.id.edt_num2) // Corrente
+        val edtNum3 = findViewById<EditText>(R.id.edt_num3) // Resistência
+        val btnCalcular = findViewById<Button>(R.id.btn_calcular)
+        val btnLimpar = findViewById<Button>(R.id.btn_limpar)
 
-        btnSub.setOnClickListener {
-            val num1 = edtNum1.text.toString().toInt()
-            val num2 = edtNum2.text.toString().toInt()
-            val sub = num1 - num2
+        btnCalcular.setOnClickListener {
+            val tensao = edtNum1.text.toString().toDoubleOrNull()
+            val corrente = edtNum2.text.toString().toDoubleOrNull()
+            val resistencia = edtNum3.text.toString().toDoubleOrNull()
 
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("RESULTADO!!")
-            builder.setMessage("A Subtração é: $sub")
-            val alert = builder.create()
-            alert.show()
-            edtNum1.text.clear()
-            edtNum2.text.clear()
-        }
-
-        btnDiv.setOnClickListener {
-            val num1 = edtNum1.text.toString().toInt()
-            val num2 = edtNum2.text.toString().toInt()
-
-            if (num2 == 0){
-                val builder = AlertDialog.Builder(this)
-                builder.setTitle("ERROR!!")
-                builder.setMessage("NÃO É POSSIVEL DIVIDIR POR 0")
-                val alert = builder.create()
-                alert.show()
+            // I = V / R
+            if (tensao != null && resistencia != null && corrente == null && resistencia != 0.0) {
+                edtNum2.setText("%.2f".format(tensao / resistencia))
             }
-            else {
-                val div = num1 / num2
-                val builder = AlertDialog.Builder(this)
-                builder.setTitle("RESULTADO!!")
-                builder.setMessage("A Divisão é: $div")
-                val alert = builder.create()
-                alert.show()
+            // R = V / I
+            else if (tensao != null && corrente != null && resistencia == null && corrente != 0.0) {
+                edtNum3.setText("%.2f".format(tensao / corrente))
             }
-            edtNum1.text.clear()
-            edtNum2.text.clear()
-        }
-
-        btnMult.setOnClickListener {
-            val num1 = edtNum1.text.toString().toInt()
-            val num2 = edtNum2.text.toString().toInt()
-            val mult = num1 * num2
-
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("RESULTADO!!")
-            builder.setMessage("A Subtração é: $mult")
-            val alert = builder.create()
-            alert.show()
-            edtNum1.text.clear()
-            edtNum2.text.clear()
-        }
-
-        btnSoma.setOnClickListener {
-            val num1 = edtNum1.text.toString().toInt()
-            val num2 = edtNum2.text.toString().toInt()
-            val soma = num1+num2
-
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("RESULTADO!!")
-            builder.setMessage("A Soma é: $soma")
-            val alert = builder.create()
-            alert.show()
-            edtNum1.text.clear()
-            edtNum2.text.clear()
+            // V = R * I
+            else if (resistencia != null && corrente != null && tensao == null) {
+                edtNum1.setText("%.2f".format(resistencia * corrente))
+            }
+            btnLimpar.setOnClickListener {
+                edtNum1.text.clear()
+                edtNum2.text.clear()
+                edtNum3.text.clear()
+            }
         }
 
     }

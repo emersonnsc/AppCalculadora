@@ -5,18 +5,45 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#7C62C5"
+    android:background="#B0A1D0"
     tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn_limpar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="36dp"
+        android:background="@color/white"
+        android:backgroundTint="#FBFAFA"
+        android:text="Limpar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_calcular" />
+
+    <EditText
+        android:id="@+id/edt_num3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:background="#FBFBFB"
+        android:ems="10"
+        android:hint="Resistência:"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_num2" />
 
     <EditText
         android:id="@+id/edt_num1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="64dp"
         android:background="#F9F8FA"
         android:backgroundTint="#FDFBFB"
         android:ems="10"
-        android:hint="1° Valor:"
+        android:hint="Tensão:"
         android:inputType="numberDecimal"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,7 +58,7 @@
         android:layout_marginTop="36dp"
         android:background="#FBFBFB"
         android:ems="10"
-        android:hint="2° Valor:"
+        android:hint="Corrente:"
         android:inputType="numberDecimal"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,60 +67,26 @@
         app:layout_constraintTop_toBottomOf="@+id/edt_num1" />
 
     <Button
-        android:id="@+id/btn_somar"
+        android:id="@+id/btn_calcular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="36dp"
         android:background="@color/white"
         android:backgroundTint="#FBFAFA"
-        android:text="SOMAR"
+        android:text="Calcular"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_num2" />
-
-    <Button
-        android:id="@+id/btn_sub"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="80dp"
-        android:background="#673AB7"
-        android:text="SUBTRA"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_num2" />
-
-    <Button
-        android:id="@+id/btn_div"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="28dp"
-        android:background="#673AB7"
-        android:text="DIVISAO"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_somar" />
-
-    <Button
-        android:id="@+id/btn_mult"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="80dp"
-        android:background="#673AB7"
-        android:text="MULTIP"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_sub" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_num3" />
 
     <TextView
         android:id="@+id/calc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
-        android:text="Calculadora"
-        android:textColor="#F6F5F8"
-        android:textSize="50dp"
+        android:layout_marginTop="96dp"
+        android:text="Calculadora da 1° Lei de 0hm"
+        android:textColor="#673AB7"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
